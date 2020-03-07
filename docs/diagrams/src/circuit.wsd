@@ -1,0 +1,76 @@
+@startuml
+title Circuit
+
+' # Interfaces
+interface GND #Blue
+interface 5V #Red
+interface InputPin #Green
+interface OutputPin #Orange
+
+' # Components
+component HallSensor1 #Plum
+component HallSensor2 #Plum
+component HallSensor3 #Plum
+component HallSensor4 #Plum
+component HallSensor5 #Plum
+component HallSensor6 #Plum
+component SignalDiaode1 #YellowGreen
+component SignalDiaode2 #YellowGreen
+component SignalDiaode3 #YellowGreen
+component SignalDiaode4 #YellowGreen
+component SignalDiaode5 #YellowGreen
+component SignalDiaode6 #YellowGreen
+component Arduino #Teal
+component LockCircuitControl #SkyBlue
+component Lock #Gold
+component BatteryPack #IndianRed
+
+' #[Links] Index.tsx 
+Arduino --[#Blue]> GND
+Arduino --[#Red]> 5V
+Arduino --[#Green]> InputPin
+Arduino --[#Orange]> OutputPin
+
+OutputPin --[#Orange]> LockCircuitControl
+GND --[#Blue]> LockCircuitControl
+5V --[#Red]> LockCircuitControl
+LockCircuitControl --> Lock
+LockCircuitControl --> BatteryPack
+BatteryPack --> Lock
+
+InputPin ---[#Green]> HallSensor1
+InputPin ---[#Green]> HallSensor2
+InputPin ---[#Green]> HallSensor3
+InputPin ---[#Green]> HallSensor4
+InputPin ---[#Green]> HallSensor5
+InputPin ---[#Green]> HallSensor6
+GND ---[#Blue]> HallSensor1
+GND ---[#Blue]> HallSensor2
+GND ---[#Blue]> HallSensor3
+GND ---[#Blue]> HallSensor4
+GND ---[#Blue]> HallSensor5
+GND ---[#Blue]> HallSensor6
+5V ---[#Red]> HallSensor1
+5V ---[#Red]> HallSensor2
+5V ---[#Red]> HallSensor3
+5V ---[#Red]> HallSensor4
+5V ---[#Red]> HallSensor5
+5V ---[#Red]> HallSensor6
+
+OutputPin ---[#Orange]> SignalDiaode1
+OutputPin ---[#Orange]> SignalDiaode2
+OutputPin ---[#Orange]> SignalDiaode3
+OutputPin ---[#Orange]> SignalDiaode4
+OutputPin ---[#Orange]> SignalDiaode5
+OutputPin ---[#Orange]> SignalDiaode6
+GND ---[#Blue]> SignalDiaode1
+GND ---[#Blue]> SignalDiaode2
+GND ---[#Blue]> SignalDiaode3
+GND ---[#Blue]> SignalDiaode4
+GND ---[#Blue]> SignalDiaode5
+GND ---[#Blue]> SignalDiaode6
+
+
+
+@enduml
+
